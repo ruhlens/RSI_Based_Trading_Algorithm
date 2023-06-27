@@ -34,8 +34,8 @@ def main():
         indicator = Indicator(data.getCandles(), 120)
         rsi = indicator.getRSI()
         currentPrice = data.getPrice()
-        x.append(float(currentPrice.get("price")))
-        y.append(index)
+        x.append(index)
+        y.append(float(currentPrice.get("price")))
         if len(x) > 120:
             x.remove(x[0])
             graph.clear()
@@ -50,7 +50,7 @@ def main():
         shares = rsiAlgo[2]
         price = rsiAlgo[3]
         percentage = (money - 100000) / 100000
-        graph.liveGraph(y,x, buys, avBuyPrice, avSellPrice, percentage, money)
+        graph.liveGraph(x, y, buys, avBuyPrice, avSellPrice, percentage, money)
         if orderType == "B":
             buys.append(price)
         if orderType == "S":
